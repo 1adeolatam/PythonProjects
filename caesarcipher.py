@@ -45,4 +45,3 @@ print(enc)
 print("\n")
 
 decrypt(enc)
-print(key)
