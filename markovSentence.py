@@ -5,7 +5,7 @@ import random
 #remove double spaces from file input
 def readFile(flnm):
 	with open(flnm,"r") as file:
-		src = file.read().replace('\n\n',' ')
+		src = file.read().replace('\n\n','\n').replace(':',' ').replace(';',' ')
 	return src
 
 def makeChain(src, chain = {}):
