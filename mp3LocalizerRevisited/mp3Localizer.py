@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import eyed3
 import sys
-
+from translation import bing
 
 #def getTag(flnm):	
 	#if eyeD3.isMp3File(flnm):
@@ -16,3 +16,6 @@ if __name__ == '__main__':
 	print(audioFile.tag.artist)
 	print(audioFile.tag.album)
 	print(audioFile.tag.genre)
+	print(bing(audioFile.tag.artist, dst = 'ru'))
+	
+	
