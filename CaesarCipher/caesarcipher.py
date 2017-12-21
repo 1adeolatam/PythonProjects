@@ -7,15 +7,21 @@ import string
 
 key = string.printable
 
+def readFile(flnm):
+	with open(flnm,"r") as file:
+		src = file.read().replace('\n\n','\n').replace(':',' ').replace(';',' ')
+	return src
+
 
 def encrypt(n, source):
 	result = ''
-	for l in source.lower():
+	for l in source:
 			i = (key.index(l) + n) % len(key)
 			result += key[i]
-	return result.lower()
+	return result
 	
 def decrypt(ciphertext):
+	final = ''
 	for i in range(len(key)):
 		decrypted = ''
 		
@@ -31,17 +37,19 @@ def decrypt(ciphertext):
 				num += len(key)
 				
 			decrypted += key[num]
-				
-		print('Key #%s: %s'%(i,decrypted))
+		final += decrypted +'\n'		
+	return final
+
+def writeFile(msg, flnm):
+	with open(flnm,"w") as file:
+		file.write(msg)
 
 
-src = input("enter source text\n")
-offset = int(input("enter num between 1 and %s\n"%len(key)))
+if __name__ == '__main__':
+	if len(sys.argv) != 4:
+		print("python markovSentence.py InputFileName Offset OutputFileName ")
+		exit
+	source = readFile(sys.argv[1])
 
-enc = encrypt(offset,src)
-print(src)
-print("The encrypted text is: \n")
-print(enc)
-print("\n")
-
-decrypt(enc)
+	enc = encrypt(int(sys.argv[2])%len(key),source)
+	writeFile(decrypt(enc),sys.argv[3])
