@@ -16,6 +16,7 @@ if __name__ == '__main__':
 	print(audioFile.tag.artist)
 	print(audioFile.tag.album)
 	print(audioFile.tag.genre)
-	print(bing(audioFile.tag.artist, dst = 'ru'))
+	print(bing(audioFile.tag.artist, dst = 'en'))
+	print(bing(audioFile.tag.title, dst = 'en'))
 	
 	
