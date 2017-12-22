@@ -47,7 +47,7 @@ def writeFile(msg, flnm):
 
 if __name__ == '__main__':
 	if len(sys.argv) != 4:
-		print("python markovSentence.py InputFileName Offset OutputFileName ")
+		print("python caesarcipher.py InputFileName Offset OutputFileName ")
 		exit
 	source = readFile(sys.argv[1])
 
